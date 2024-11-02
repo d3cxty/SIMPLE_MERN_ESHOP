@@ -26,6 +26,8 @@ app.findproduct = async(req,res)=>{
     res.json(Product);
     if(!Product){
         res.json({"message": "no products were found"});
+    }else{
+        res.json({"message": "products were found"});
     }
 };
 

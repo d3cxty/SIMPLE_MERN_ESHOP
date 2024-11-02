@@ -26,9 +26,7 @@ app.findproduct = async(req,res)=>{
     res.json(Product);
     if(!Product){
         res.json({"message": "no products were found"});
-    }else{
-        res.json({"message": "products were found"});
-    }
+    };
 };
 
 //fetch product by id
@@ -53,6 +51,29 @@ app.deleteproduct = async(req,res)=>{
     catch (err) {
         console.error(err);
         res.status(500).json({ message: 'Error deleting product' });
+    }
+};
+
+//update product
+
+app.updateproduct = async(req,res)=>{
+    try {
+        const { id } = req.params;
+        const updatedproduct = await product.findByIdAndUpdate(id
+            ,req.body,
+             { new: true ,
+                runValidators: true
+             }
+        );
+
+        if(!updatedproduct){
+            return res.status(404).json({"message":"product not found"})
+        }
+        res.json({"message":"product updated successfully"})
+    }
+    catch (err) {
+        console.error(err);
+        res.status(500).json({ message: 'Error updating product' });
     }
 };
 

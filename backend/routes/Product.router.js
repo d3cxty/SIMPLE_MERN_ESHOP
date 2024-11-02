@@ -1,5 +1,5 @@
 import express from 'express';
-import app from '../controllers/products.controller.js';
+import app from '../controllers/product.controller.js';
 const router = express.Router();
 router.use(express.json());
 

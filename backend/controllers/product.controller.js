@@ -1,5 +1,5 @@
 import express from 'express';
-import product from '../models/Product.models.js'
+import product from '../models/Product.model.js'
 
 const app = express();
 app.use(express.json());
@@ -22,9 +22,9 @@ app.addproduct = async (req, res) => {  // Use POST for adding products
 //fetch products
 app.findproduct = async(req,res)=>{
     
-    const product = await product.find();
-    res.json(product);
-    if(!product){
+    const Product = await product.find();
+    res.json(Product);
+    if(!Product){
         res.json({"message": "no products were found"});
     }
 };
@@ -32,13 +32,13 @@ app.findproduct = async(req,res)=>{
 //fetch product by id
 app.findproductById = async(req,res)=>{
     const{id} = req.params;
-    const product = await product.findById(id);
-    res.json(product);
+    const Product = await product.findById(id);
+    res.json(Product);
 };
 
 //delete product
 
-app.deleteProduct = async(req,res)=>{
+app.deleteproduct = async(req,res)=>{
     try {
         const { id } = req.params;
         const deletedproduct = await product.findByIdAndDelete(id);

@@ -8,7 +8,7 @@ app.use(cors());
 
 app.use('/', router);
 // Connect to MongoDB
-const port = 5000;
+const port = 3578;
 app.listen(port , (err, res) => {
     connectDB();
     console.log(`Server running on port ${port}`);
